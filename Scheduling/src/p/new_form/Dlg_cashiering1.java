@@ -1,0 +1,450 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package p.new_form;
+
+import bb.dlg.Dlg_donation;
+import bb.dlg2.dlg_rite_fees_settings;
+import java.awt.Toolkit;
+import java.awt.Window;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import java.util.logging.Level;
+import overallPOS.modules.share.utils.Center;
+import overallPOS.modules.share.utils.CloseDialog;
+import overallPOS.modules.share.utils.KeyMapping;
+import overallPOS.modules.share.utils.KeyMapping.KeyAction;
+import p.cashier.Dlg_payment_intentions;
+import p.svc.S1_mass_schedules;
+import rpt_main.Dlg_cash_report;
+
+/**
+ *
+ * @author dummy
+ */
+public class Dlg_cashiering1 extends javax.swing.JDialog {
+
+    /**
+     * Creates new form Dlg_cashiering
+     */
+    //<editor-fold defaultstate="collapsed" desc=" callback ">
+    private Callback callback;
+
+    public void setCallback(Callback callback) {
+        this.callback = callback;
+
+
+    }
+
+    public static interface Callback {
+
+        void ok(CloseDialog closeDialog, OutputData data);
+    }
+
+    public static class InputData {
+    }
+
+    public static class OutputData {
+    }
+//</editor-fold>
+
+    //<editor-fold defaultstate="collapsed" desc=" Constructors ">
+    private Dlg_cashiering1(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
+        initComponents();
+        myInit();
+    }
+
+    private Dlg_cashiering1(java.awt.Dialog parent, boolean modal) {
+        super(parent, modal);
+        initComponents();
+        myInit();
+    }
+
+    public Dlg_cashiering1() {
+        super();
+        initComponents();
+        myInit();
+
+    }
+    private Dlg_cashiering1 myRef;
+
+    private void setThisRef(Dlg_cashiering1 myRef) {
+        this.myRef = myRef;
+    }
+    private static java.util.Map<Object, Dlg_cashiering1> dialogContainer = new java.util.HashMap();
+
+    public static void clearUpFirst(java.awt.Window parent) {
+        if (dialogContainer.containsKey(parent)) {
+            dialogContainer.remove(parent);
+        }
+    }
+
+    public static Dlg_cashiering1 create(java.awt.Window parent, boolean modal) {
+
+        if (modal) {
+            return create(parent, ModalityType.MODELESS);
+        }
+
+        return create(parent, ModalityType.MODELESS);
+
+    }
+
+    public static Dlg_cashiering1 create(java.awt.Window parent, java.awt.Dialog.ModalityType modalType) {
+
+        if (parent instanceof java.awt.Frame) {
+
+            Dlg_cashiering1 dialog = dialogContainer.get(parent);
+
+            if (dialog == null) {
+                dialog = new Dlg_cashiering1((java.awt.Frame) parent, false);
+                dialog.setModalityType(modalType);
+                dialogContainer.put(parent, dialog);
+                java.util.logging.Logger.getAnonymousLogger().log(Level.INFO, "instances: {0}", dialogContainer.size());
+                dialog.setThisRef(dialog);
+                return dialog;
+            } else {
+                dialog.setModalityType(modalType);
+                return dialog;
+            }
+
+        }
+
+        if (parent instanceof java.awt.Dialog) {
+            Dlg_cashiering1 dialog = dialogContainer.get(parent);
+
+            if (dialog == null) {
+                dialog = new Dlg_cashiering1((java.awt.Dialog) parent, false);
+                dialog.setModalityType(modalType);
+                dialogContainer.put(parent, dialog);
+                java.util.logging.Logger.getAnonymousLogger().log(Level.INFO, "instances: {0}", dialogContainer.size());
+                dialog.setThisRef(dialog);
+                return dialog;
+            } else {
+                dialog.setModalityType(modalType);
+                return dialog;
+            }
+
+        }
+
+        return null;
+
+    }
+    //</editor-fold>    
+
+    //<editor-fold defaultstate="collapsed" desc=" main ">
+    public static void main(String args[]) {
+
+        try {
+            javax.swing.UIManager.setLookAndFeel(javax.swing.UIManager.getSystemLookAndFeelClassName());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+
+        Dlg_cashiering1 dialog = Dlg_cashiering1.create(new javax.swing.JFrame(), true);
+        dialog.setVisible(true);
+
+    }
+    //</editor-fold>
+
+    //<editor-fold defaultstate="collapsed" desc=" added ">
+    @Override
+    public void setVisible(boolean visible) {
+        super.setVisible(visible);
+        if (visible == true) {
+            getContentPane().removeAll();
+            initComponents();
+            myInit();
+            repaint();
+        }
+
+
+    }
+
+    public javax.swing.JPanel getSurface() {
+        return (javax.swing.JPanel) getContentPane();
+    }
+
+    public void nullify() {
+        myRef.setVisible(false);
+        myRef = null;
+    }
+    //</editor-fold>
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel2.setBackground(new java.awt.Color(43, 140, 221));
+
+        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel1.setForeground(java.awt.Color.white);
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("CASHIERING");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 730, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 24, 730, -1));
+
+        jButton1.setText("CLOSE");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 200, 150, 60));
+
+        jButton2.setText("SACRAMENTS");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 170, 60));
+
+        jButton3.setText("INTENTIONS");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 150, 60));
+
+        jButton4.setText("DONATIONS");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 150, 60));
+
+        jButton5.setText("SAC. FEES");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 110, 150, 60));
+
+        jButton6.setText("REPORTS");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 110, 150, 60));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        disposed();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        pay();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        payment_intention();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        donations();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        sac_fees();
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        reports();
+    }//GEN-LAST:event_jButton6ActionPerformed
+    /**
+     * @param args the command line arguments
+     */
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    // End of variables declaration//GEN-END:variables
+
+    private void myInit() {
+        init_key();
+    }
+
+    public void do_pass() {
+    }
+    // <editor-fold defaultstate="collapsed" desc="Key">
+
+    private void disposed() {
+        this.dispose();
+    }
+
+    private void init_key() {
+        KeyMapping.mapKeyWIFW(getSurface(),
+                KeyEvent.VK_ESCAPE, new KeyAction() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+//                btn_0.doClick();
+                disposed();
+            }
+        });
+    }
+    // </editor-fold>
+
+    private void payment_intention() {
+        Window p = (Window) this;
+        Dlg_payment_intentions nd = Dlg_payment_intentions.create(p, true);
+        nd.setTitle("");
+        nd.do_pass("");
+        nd.setCallback(new Dlg_payment_intentions.Callback() {
+
+            @Override
+            public void ok(CloseDialog closeDialog, Dlg_payment_intentions.OutputData data) {
+                closeDialog.ok();
+            }
+        });
+        Center.setCenter(nd);
+
+        nd.setVisible(true);
+    }
+
+    private void donations() {
+
+        Window p = (Window) this;
+        Dlg_donation nd = Dlg_donation.create(p, true);
+        nd.setTitle("");
+        nd.do_pass();
+        nd.setCallback(new Dlg_donation.Callback() {
+
+            @Override
+            public void ok(CloseDialog closeDialog, Dlg_donation.OutputData data) {
+                closeDialog.ok();
+                do_add_donations(data.donor, data.amount, data.or_no);
+            }
+        });
+        Center.setCenter(nd);
+
+        nd.setVisible(true);
+    }
+
+    private void do_add_donations(String name, double amount, String or_no) {
+//        S1_mass_schedules.do_pay_donation(name, amount, or_no);
+    }
+
+    private void reports() {
+        Window p = (Window) this;
+        Dlg_cash_report nd = Dlg_cash_report.create(p, true);
+        nd.setTitle("");
+        nd.do_pass();
+        nd.setCallback(new Dlg_cash_report.Callback() {
+
+            @Override
+            public void ok(CloseDialog closeDialog, Dlg_cash_report.OutputData data) {
+                closeDialog.ok();
+            }
+        });
+        Center.setCenter(nd);
+
+        nd.setVisible(true);
+    }
+
+    private void sac_fees() {
+        Window p = (Window) this;
+        dlg_rite_fees_settings nd = dlg_rite_fees_settings.create(p, true);
+        nd.setTitle("");
+//        nd.do_pass();
+        nd.setCallback(new dlg_rite_fees_settings.Callback() {
+
+            @Override
+            public void ok(CloseDialog closeDialog, dlg_rite_fees_settings.Data data) {
+                closeDialog.ok();
+            }
+        });
+        Center.setCenter(nd);
+
+        nd.setVisible(true);
+    }
+
+    private void pay() {
+        Window p = (Window) this;
+        Dlg_search_recepient nd = Dlg_search_recepient.create(p, true);
+        nd.setTitle("");
+//        nd.do_pass();
+        nd.setCallback(new Dlg_search_recepient.Callback() {
+
+            @Override
+            public void ok(CloseDialog closeDialog, Dlg_search_recepient.OutputData data) {
+                closeDialog.ok();
+            }
+        });
+        
+        Toolkit tk = Toolkit.getDefaultToolkit();
+        int xSize = ((int) tk.getScreenSize().getWidth());
+        int ySize = ((int) tk.getScreenSize().getHeight());
+       
+        Center.setCenter(nd);
+//        Center.setCenter(nd);
+
+        nd.setVisible(true);
+         nd.setSize(xSize, ySize);
+    }
+}

@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="48"/>
+	<parameter name="date_from" class="java.util.Date"/>
+	<parameter name="date_to" class="java.util.Date"/>
+	<parameter name="printed_by" class="java.lang.String"/>
+	<parameter name="path" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select 
+or_number
+,amount_paid
+,payor
+,or_type
+,date_added
+,payment_type
+
+from 
+db_bulletin.receipts p
+where date(p.date_added) between date($P{date_from})and date($P{date_to})  and or_type='Donation' 
+;]]>
+	</queryString>
+	<field name="or_number" class="java.lang.String"/>
+	<field name="amount_paid" class="java.lang.Double"/>
+	<field name="payor" class="java.lang.String"/>
+	<field name="or_type" class="java.lang.String"/>
+	<field name="date_added" class="java.sql.Timestamp"/>
+	<field name="payment_type" class="java.lang.String"/>
+	<variable name="amount_paid_1" class="java.lang.Double" resetType="Group" resetGroup="types" calculation="Sum">
+		<variableExpression><![CDATA[$F{amount_paid}]]></variableExpression>
+	</variable>
+	<variable name="all_total" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{amount_paid}]]></variableExpression>
+	</variable>
+	<variable name="amount_paid_2" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{amount_paid}]]></variableExpression>
+	</variable>
+	<group name="types">
+		<groupExpression><![CDATA[$F{or_type}]]></groupExpression>
+		<groupHeader>
+			<band height="81">
+				<staticText>
+					<reportElement x="260" y="58" width="236" height="20"/>
+					<box>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[PARISHIONER]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="512" y="58" width="186" height="20"/>
+					<box>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[RECEIVED BY]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="703" y="58" width="100" height="20"/>
+					<box>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[AMOUNT]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="58" width="100" height="20"/>
+					<box>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[OR NUMBER]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="71" y="0" width="229" height="27"/>
+					<textElement verticalAlignment="Middle">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{or_type}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="1" y="0" width="70" height="27"/>
+					<box>
+						<bottomPen lineWidth="0.0"/>
+					</box>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[TYPE:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="108" y="59" width="144" height="20"/>
+					<box>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[DATE ADDED]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="45">
+				<textField pattern="#,##0.00">
+					<reportElement x="703" y="2" width="99" height="20"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{amount_paid_1}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="656" y="0" width="46" height="20"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[TOTAL:]]></text>
+				</staticText>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="170" splitType="Stretch">
+			<staticText>
+				<reportElement x="368" y="80" width="328" height="23"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CASH REPORTS ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="368" y="20" width="196" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[DIOCESE OF DUMAGUETE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="368" y="60" width="282" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[Cathedral, Dumaguete City]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="368" y="40" width="282" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Parish of St. Catherine of Alexandria]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="368" y="103" width="328" height="21"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FOR INTENTIONS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="540" y="150" width="52" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[As of:]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="592" y="150" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{date_from}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="692" y="150" width="10" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="702" y="150" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{date_to}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="234" y="10" width="175" height="130"/>
+				<imageExpression><![CDATA[$P{path}+"logo_cathedral1.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="1" y="-3" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{or_number}.toString()]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="703" y="-2" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{amount_paid}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="260" y="0" width="236" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{payor}.toString()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="512" y="0" width="186" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[cashier]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement x="108" y="0" width="144" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{date_added}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="33" splitType="Stretch">
+			<textField>
+				<reportElement x="682" y="0" width="80" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="762" y="0" width="40" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="109" splitType="Stretch">
+			<staticText>
+				<reportElement x="1" y="37" width="70" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[Printed by:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="69" width="70" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[Date Printed:]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="71" y="69" width="140" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="71" y="37" width="202" height="20"/>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{printed_by}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

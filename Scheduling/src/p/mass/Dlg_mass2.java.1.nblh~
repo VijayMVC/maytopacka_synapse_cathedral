@@ -1,0 +1,1823 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package p.mass;
+
+import com.lowagie.text.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.logging.Level;
+import overallPOS.modules.share.utils.CloseDialog;
+import overallPOS.modules.share.utils.FitIn;
+import overallPOS.modules.share.utils.KeyMapping;
+import overallPOS.modules.share.utils.KeyMapping.KeyAction;
+import p.svc.TableAdapter_mass;
+import p.util.DateType;
+import p.util.Maximize;
+import p.util.TableUtility;
+
+/**
+ *
+ * @author Dummy
+ */
+public class Dlg_mass2 extends javax.swing.JDialog {
+
+    /**
+     * Creates new form Dlg_mass2
+     */
+    //<editor-fold defaultstate="collapsed" desc=" callback ">
+    private Callback callback;
+
+    public void setCallback(Callback callback) {
+        this.callback = callback;
+
+
+    }
+
+    public static interface Callback {
+
+        void ok(CloseDialog closeDialog, OutputData data);
+    }
+
+    public static class InputData {
+    }
+
+    public static class OutputData {
+    }
+//</editor-fold>
+
+    //<editor-fold defaultstate="collapsed" desc=" Constructors ">
+    private Dlg_mass2(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
+        initComponents();
+        myInit();
+    }
+
+    private Dlg_mass2(java.awt.Dialog parent, boolean modal) {
+        super(parent, modal);
+        initComponents();
+        myInit();
+    }
+
+    public Dlg_mass2() {
+        super();
+        initComponents();
+        myInit();
+
+    }
+    private Dlg_mass2 myRef;
+
+    private void setThisRef(Dlg_mass2 myRef) {
+        this.myRef = myRef;
+    }
+    private static java.util.Map<Object, Dlg_mass2> dialogContainer = new java.util.HashMap();
+
+    public static void clearUpFirst(java.awt.Window parent) {
+        if (dialogContainer.containsKey(parent)) {
+            dialogContainer.remove(parent);
+        }
+    }
+
+    public static Dlg_mass2 create(java.awt.Window parent, boolean modal) {
+
+        if (modal) {
+            return create(parent, ModalityType.APPLICATION_MODAL);
+        }
+
+        return create(parent, ModalityType.MODELESS);
+
+    }
+
+    public static Dlg_mass2 create(java.awt.Window parent, java.awt.Dialog.ModalityType modalType) {
+
+        if (parent instanceof java.awt.Frame) {
+
+            Dlg_mass2 dialog = dialogContainer.get(parent);
+
+            if (dialog == null) {
+                dialog = new Dlg_mass2((java.awt.Frame) parent, false);
+                dialog.setModalityType(modalType);
+                dialogContainer.put(parent, dialog);
+                java.util.logging.Logger.getAnonymousLogger().log(Level.INFO, "instances: {0}", dialogContainer.size());
+                dialog.setThisRef(dialog);
+                return dialog;
+            } else {
+                dialog.setModalityType(modalType);
+                return dialog;
+            }
+
+        }
+
+        if (parent instanceof java.awt.Dialog) {
+            Dlg_mass2 dialog = dialogContainer.get(parent);
+
+            if (dialog == null) {
+                dialog = new Dlg_mass2((java.awt.Dialog) parent, false);
+                dialog.setModalityType(modalType);
+                dialogContainer.put(parent, dialog);
+                java.util.logging.Logger.getAnonymousLogger().log(Level.INFO, "instances: {0}", dialogContainer.size());
+                dialog.setThisRef(dialog);
+                return dialog;
+            } else {
+                dialog.setModalityType(modalType);
+                return dialog;
+            }
+
+        }
+
+        return null;
+
+    }
+    //</editor-fold>    
+
+    //<editor-fold defaultstate="collapsed" desc=" main ">
+    public static void main(String args[]) {
+
+        try {
+            javax.swing.UIManager.setLookAndFeel(javax.swing.UIManager.getSystemLookAndFeelClassName());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+
+        Dlg_mass2 dialog = Dlg_mass2.create(new javax.swing.JFrame(), true);
+        Maximize.set(dialog);
+//        dialog.setVisible(true);
+
+    }
+    //</editor-fold>
+
+    //<editor-fold defaultstate="collapsed" desc=" added ">
+    @Override
+    public void setVisible(boolean visible) {
+        super.setVisible(visible);
+        if (visible == true) {
+            getContentPane().removeAll();
+            initComponents();
+            myInit();
+            repaint();
+        }
+
+
+    }
+
+    public javax.swing.JPanel getSurface() {
+        return (javax.swing.JPanel) getContentPane();
+    }
+
+    public void nullify() {
+        myRef.setVisible(false);
+        myRef = null;
+    }
+    //</editor-fold>
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        jButton12 = new javax.swing.JButton();
+        jButton13 = new javax.swing.JButton();
+        jButton15 = new javax.swing.JButton();
+        jButton14 = new javax.swing.JButton();
+        jButton16 = new javax.swing.JButton();
+        jButton11 = new javax.swing.JButton();
+        buttonGroup2 = new javax.swing.ButtonGroup();
+        jPanel1 = new javax.swing.JPanel();
+        tf_type = new javax.swing.JTextField();
+        jButton48 = new javax.swing.JButton();
+        jButton49 = new javax.swing.JButton();
+        jButton50 = new javax.swing.JButton();
+        jButton51 = new javax.swing.JButton();
+        jButton52 = new javax.swing.JButton();
+        jButton53 = new javax.swing.JButton();
+        jButton54 = new javax.swing.JButton();
+        jButton55 = new javax.swing.JButton();
+        jButton56 = new javax.swing.JButton();
+        jButton57 = new javax.swing.JButton();
+        jButton58 = new javax.swing.JButton();
+        jButton59 = new javax.swing.JButton();
+        btn_2 = new javax.swing.JButton();
+        btn_3 = new javax.swing.JButton();
+        btn_4 = new javax.swing.JButton();
+        btn_5 = new javax.swing.JButton();
+        btn_6 = new javax.swing.JButton();
+        btn_7 = new javax.swing.JButton();
+        btn_8 = new javax.swing.JButton();
+        btn_9 = new javax.swing.JButton();
+        btn_10 = new javax.swing.JButton();
+        btn_12 = new javax.swing.JButton();
+        btn_13 = new javax.swing.JButton();
+        btn_14 = new javax.swing.JButton();
+        btn_15 = new javax.swing.JButton();
+        btn_16 = new javax.swing.JButton();
+        btn_17 = new javax.swing.JButton();
+        btn_18 = new javax.swing.JButton();
+        btn_19 = new javax.swing.JButton();
+        btn_20 = new javax.swing.JButton();
+        btn_21 = new javax.swing.JButton();
+        btn_22 = new javax.swing.JButton();
+        btn_23 = new javax.swing.JButton();
+        btn_24 = new javax.swing.JButton();
+        btn_25 = new javax.swing.JButton();
+        btn_26 = new javax.swing.JButton();
+        jButton85 = new javax.swing.JButton();
+        jButton86 = new javax.swing.JButton();
+        jButton87 = new javax.swing.JButton();
+        btn_11 = new javax.swing.JButton();
+        btn_1 = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        lbl_sp = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        lbl_name = new javax.swing.JLabel();
+        lbl_date = new javax.swing.JLabel();
+        lbl_time = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jButton10 = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        lbl_amount = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        lbl_state = new javax.swing.JTextArea();
+        jPanel4 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbl_s = new javax.swing.JTable();
+        jPanel2 = new javax.swing.JPanel();
+        jButton3 = new javax.swing.JButton();
+        btn_tg = new javax.swing.JButton();
+        btn_pm = new javax.swing.JButton();
+        btn_comm = new javax.swing.JButton();
+        btn_req = new javax.swing.JButton();
+        btn_don = new javax.swing.JButton();
+        btn_tra = new javax.swing.JButton();
+
+        jButton12.setText("jButton3");
+
+        jButton13.setText("jButton3");
+
+        jButton15.setText("jButton3");
+
+        jButton14.setText("jButton3");
+
+        jButton16.setText("jButton3");
+
+        jButton11.setText("jButton3");
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tf_type.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        tf_type.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        tf_type.setFocusable(false);
+        tf_type.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_typeActionPerformed(evt);
+            }
+        });
+        tf_type.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tf_typeKeyReleased(evt);
+            }
+        });
+        jPanel1.add(tf_type, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 830, 36));
+
+        jButton48.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton48.setText("2");
+        jButton48.setFocusable(false);
+        jButton48.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton48ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton48, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, 70, 60));
+
+        jButton49.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton49.setText("1");
+        jButton49.setFocusable(false);
+        jButton49.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton49ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton49, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 70, 60));
+
+        jButton50.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton50.setText("3");
+        jButton50.setFocusable(false);
+        jButton50.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton50ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton50, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 70, 60));
+
+        jButton51.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton51.setText("4");
+        jButton51.setFocusable(false);
+        jButton51.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton51ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton51, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, 70, 60));
+
+        jButton52.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton52.setText("5");
+        jButton52.setFocusable(false);
+        jButton52.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton52ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton52, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 80, 70, 60));
+
+        jButton53.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton53.setText("6");
+        jButton53.setFocusable(false);
+        jButton53.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton53ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton53, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, 70, 60));
+
+        jButton54.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton54.setText("7");
+        jButton54.setFocusable(false);
+        jButton54.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton54ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton54, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 80, 70, 60));
+
+        jButton55.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton55.setText("8");
+        jButton55.setFocusable(false);
+        jButton55.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton55ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton55, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 80, 70, 60));
+
+        jButton56.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton56.setText("9");
+        jButton56.setFocusable(false);
+        jButton56.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton56ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton56, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 80, 70, 60));
+
+        jButton57.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton57.setText("0");
+        jButton57.setFocusable(false);
+        jButton57.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton57ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton57, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 80, 70, 60));
+
+        jButton58.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton58.setText("SPACE");
+        jButton58.setFocusable(false);
+        jButton58.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton58ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton58, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 290, 190, 60));
+
+        jButton59.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton59.setText("CAPS");
+        jButton59.setFocusable(false);
+        jButton59.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton59ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton59, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 290, 130, 60));
+
+        btn_2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_2.setText("W");
+        btn_2.setFocusable(false);
+        btn_2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, 70, 60));
+
+        btn_3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_3.setText("E");
+        btn_3.setFocusable(false);
+        btn_3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_3ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 70, 60));
+
+        btn_4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_4.setText("R");
+        btn_4.setFocusable(false);
+        btn_4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_4ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 150, 70, 60));
+
+        btn_5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_5.setText("T");
+        btn_5.setFocusable(false);
+        btn_5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_5ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_5, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, 70, 60));
+
+        btn_6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_6.setText("Y");
+        btn_6.setFocusable(false);
+        btn_6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_6ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_6, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, 70, 60));
+
+        btn_7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_7.setText("U");
+        btn_7.setFocusable(false);
+        btn_7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_7ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_7, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 150, 70, 60));
+
+        btn_8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_8.setText("I");
+        btn_8.setFocusable(false);
+        btn_8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_8ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_8, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 150, 70, 60));
+
+        btn_9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_9.setText("O");
+        btn_9.setFocusable(false);
+        btn_9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_9ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_9, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 150, 70, 60));
+
+        btn_10.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_10.setText("P");
+        btn_10.setFocusable(false);
+        btn_10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_10ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_10, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 150, 70, 60));
+
+        btn_12.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_12.setText("S");
+        btn_12.setFocusable(false);
+        btn_12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_12ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_12, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, 70, 60));
+
+        btn_13.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_13.setText("D");
+        btn_13.setFocusable(false);
+        btn_13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_13ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_13, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, 70, 60));
+
+        btn_14.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_14.setText("F");
+        btn_14.setFocusable(false);
+        btn_14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_14ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_14, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 220, 70, 60));
+
+        btn_15.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_15.setText("G");
+        btn_15.setFocusable(false);
+        btn_15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_15ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_15, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 220, 70, 60));
+
+        btn_16.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_16.setText("H");
+        btn_16.setFocusable(false);
+        btn_16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_16ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_16, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 220, 70, 60));
+
+        btn_17.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_17.setText("J");
+        btn_17.setFocusable(false);
+        btn_17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_17ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_17, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 220, 70, 60));
+
+        btn_18.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_18.setText("K");
+        btn_18.setFocusable(false);
+        btn_18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_18ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_18, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 220, 70, 60));
+
+        btn_19.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_19.setText("L");
+        btn_19.setFocusable(false);
+        btn_19.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_19ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_19, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 220, 70, 60));
+
+        btn_20.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_20.setText("Z");
+        btn_20.setFocusable(false);
+        btn_20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_20ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_20, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 70, 60));
+
+        btn_21.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_21.setText("X");
+        btn_21.setFocusable(false);
+        btn_21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_21ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_21, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, 70, 60));
+
+        btn_22.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_22.setText("C");
+        btn_22.setFocusable(false);
+        btn_22.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_22ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_22, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, 70, 60));
+
+        btn_23.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_23.setText("V");
+        btn_23.setFocusable(false);
+        btn_23.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_23ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_23, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 290, 70, 60));
+
+        btn_24.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_24.setText("B");
+        btn_24.setFocusable(false);
+        btn_24.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_24ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_24, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 290, 70, 60));
+
+        btn_25.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_25.setText("N");
+        btn_25.setFocusable(false);
+        btn_25.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_25ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_25, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 290, 70, 60));
+
+        btn_26.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_26.setText("M");
+        btn_26.setFocusable(false);
+        btn_26.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_26ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_26, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 290, 70, 60));
+
+        jButton85.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton85.setText("123");
+        jButton85.setFocusable(false);
+        jPanel1.add(jButton85, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 150, 110, 60));
+
+        jButton86.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton86.setText("BACKSPACE");
+        jButton86.setFocusable(false);
+        jPanel1.add(jButton86, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 80, 120, 60));
+
+        jButton87.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton87.setText("ENTER");
+        jButton87.setFocusable(false);
+        jButton87.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton87ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton87, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 220, 180, 60));
+
+        btn_11.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_11.setText("A");
+        btn_11.setFocusable(false);
+        btn_11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_11ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 70, 60));
+
+        btn_1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_1.setText("Q");
+        btn_1.setFocusable(false);
+        btn_1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 70, 60));
+
+        jPanel3.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("100");
+        jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 220, 27));
+
+        lbl_sp.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lbl_sp.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lbl_sp.setText("ENTER   NAME:");
+        jPanel3.add(lbl_sp, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 136, 35));
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel5.setText("CHOOSE TIME:");
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 136, 27));
+
+        lbl_name.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbl_name.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_name.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lbl_name.setOpaque(true);
+        lbl_name.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_nameMouseClicked(evt);
+            }
+        });
+        jPanel3.add(lbl_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 650, 30));
+
+        lbl_date.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbl_date.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_date.setText("OCTOBER 1,2012");
+        lbl_date.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lbl_date.setOpaque(true);
+        lbl_date.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_dateMouseClicked(evt);
+            }
+        });
+        jPanel3.add(lbl_date, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 650, 30));
+
+        lbl_time.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbl_time.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_time.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lbl_time.setOpaque(true);
+        lbl_time.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_timeMouseClicked(evt);
+            }
+        });
+        jPanel3.add(lbl_time, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 650, 30));
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel7.setText("CHOOSE DATE:");
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, 27));
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel8.setText("REF #:");
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 130, 27));
+
+        jButton10.setText("NEXT");
+        jButton10.setFocusable(false);
+        jPanel3.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 190, 80, 70));
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel9.setText("AMOUNT:");
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 20, 130, 27));
+
+        lbl_amount.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lbl_amount.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_amount.setText("0.00");
+        lbl_amount.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel3.add(lbl_amount, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 20, 220, 27));
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel6.setText("ENTER   NAME:");
+        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 136, 35));
+
+        lbl_state.setColumns(20);
+        lbl_state.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbl_state.setLineWrap(true);
+        lbl_state.setRows(5);
+        lbl_state.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_stateMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(lbl_state);
+
+        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 550, 90));
+
+        jPanel4.setBackground(new java.awt.Color(204, 204, 204));
+
+        tbl_s.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tbl_s.setFocusable(false);
+        tbl_s.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl_sMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tbl_sMousePressed(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tbl_s);
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(jScrollPane1)
+                .addContainerGap())
+        );
+
+        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
+
+        jButton3.setText("X");
+        buttonGroup2.add(jButton3);
+        jButton3.setFocusable(false);
+
+        btn_tg.setBackground(new java.awt.Color(102, 102, 255));
+        btn_tg.setText("TG");
+        buttonGroup2.add(btn_tg);
+        btn_tg.setFocusable(false);
+        btn_tg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_tgActionPerformed(evt);
+            }
+        });
+
+        btn_pm.setBackground(new java.awt.Color(102, 102, 255));
+        btn_pm.setText("PM");
+        buttonGroup2.add(btn_pm);
+        btn_pm.setFocusable(false);
+        btn_pm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_pmActionPerformed(evt);
+            }
+        });
+
+        btn_comm.setBackground(new java.awt.Color(102, 102, 255));
+        btn_comm.setText("COMM");
+        buttonGroup2.add(btn_comm);
+        btn_comm.setFocusable(false);
+        btn_comm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_commActionPerformed(evt);
+            }
+        });
+
+        btn_req.setBackground(new java.awt.Color(102, 102, 255));
+        btn_req.setText("REQ");
+        buttonGroup2.add(btn_req);
+        btn_req.setFocusable(false);
+        btn_req.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_reqActionPerformed(evt);
+            }
+        });
+
+        btn_don.setBackground(new java.awt.Color(102, 102, 255));
+        btn_don.setText("DON");
+        buttonGroup2.add(btn_don);
+        btn_don.setFocusable(false);
+        btn_don.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_donActionPerformed(evt);
+            }
+        });
+
+        btn_tra.setBackground(new java.awt.Color(102, 102, 255));
+        btn_tra.setText("TRA");
+        buttonGroup2.add(btn_tra);
+        btn_tra.setFocusable(false);
+        btn_tra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_traActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_tg, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_pm, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_comm, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_req, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_don, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_tra, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(btn_tg, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(btn_pm, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(btn_comm, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(btn_req, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(btn_don, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(btn_tra, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(130, 130, 130)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 854, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE))
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_20ActionPerformed
+        // TODO add your handling code here:
+         set_lbl("Z");
+    }//GEN-LAST:event_btn_20ActionPerformed
+
+    private void lbl_dateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_dateMouseClicked
+        // TODO add your handling code here:
+        if (p_btn == 5 || p_btn == 6) {
+
+            lbl_date.setText(DateType.str.format(new Date()));
+
+        } else {
+            p_input = 1;
+            clear_1();
+            tf_type.setFocusable(false);
+            set_table_tg();
+            set_bg_lbl();
+            set_n();
+        }
+
+//        tbl_s.setRowSelectionInterval(0, 0);
+    }//GEN-LAST:event_lbl_dateMouseClicked
+
+    private void lbl_timeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_timeMouseClicked
+        // TODO add your handling code here:
+        p_input = 2;
+        clear_1();
+
+        tf_type.setFocusable(false);
+        set_table_tg();
+        set_bg_lbl();
+        set_n();
+//        tbl_s.setRowSelectionInterval(0, 0);
+    }//GEN-LAST:event_lbl_timeMouseClicked
+
+    private void lbl_nameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_nameMouseClicked
+        // TODO add your handling code here:
+        p_input = 3;
+//        clear_1();
+        tf_type.setFocusable(true);
+        tf_type.grabFocus();
+        set_table_tg();
+        set_bg_lbl();
+        set_n();
+    }//GEN-LAST:event_lbl_nameMouseClicked
+
+    private void btn_tgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tgActionPerformed
+        // TODO add your handling code here:
+        p_btn = 1;
+        p_input = 1;
+
+        set_cost();
+        clear();
+        set_bg_btn();
+        set_table_tg();
+    }//GEN-LAST:event_btn_tgActionPerformed
+
+    private void btn_pmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pmActionPerformed
+        // TODO add your handling code here:
+        p_btn = 2;
+        p_input = 1;
+        set_cost();
+
+        clear();
+        set_bg_btn();
+        set_table_tg();
+    }//GEN-LAST:event_btn_pmActionPerformed
+
+    private void btn_commActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_commActionPerformed
+        // TODO add your handling code here:
+        p_btn = 3;
+        p_input = 1;
+        set_cost();
+
+        clear();
+        set_bg_btn();
+        set_table_tg();
+    }//GEN-LAST:event_btn_commActionPerformed
+
+    private void btn_reqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_reqActionPerformed
+        // TODO add your handling code here:
+        p_btn = 4;
+        p_input = 1;
+        set_cost();
+
+        clear();
+        set_bg_btn();
+        set_table_tg();
+        lbl_amount.setText("0.00");
+    }//GEN-LAST:event_btn_reqActionPerformed
+
+    private void btn_donActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_donActionPerformed
+        // TODO add your handling code here:
+        p_btn = 5;
+        p_input = 3;
+        set_cost();
+
+        lbl_state.setText("");
+        lbl_name.setText("");
+        lbl_date.setText(DateType.str.format(new Date()));
+        lbl_time.setText("now");
+
+        sponsors.clear();
+        set_bg_btn();
+        set_bg_lbl();
+        tf_type.setFocusable(true);
+        tf_type.grabFocus();
+        set_table_tg();
+    }//GEN-LAST:event_btn_donActionPerformed
+
+    private void btn_traActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_traActionPerformed
+        // TODO add your handling code here:
+        p_btn = 6;
+        p_input = 3;
+        
+        set_cost();
+
+
+        lbl_state.setText("");
+        lbl_name.setText("");
+        lbl_date.setText(DateType.str.format(new Date()));
+        lbl_time.setText("now");
+
+        sponsors.clear();
+        set_bg_lbl();
+        set_bg_btn();
+        tf_type.setFocusable(true);
+        tf_type.grabFocus();
+        set_table_tg();
+    }//GEN-LAST:event_btn_traActionPerformed
+
+    private void jButton49ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton49ActionPerformed
+        // TODO add your handling code here:
+        set_lbl("1");
+    }//GEN-LAST:event_jButton49ActionPerformed
+
+    private void jButton48ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton48ActionPerformed
+        // TODO add your handling code here:
+        set_lbl("2");
+    }//GEN-LAST:event_jButton48ActionPerformed
+
+    private void jButton50ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton50ActionPerformed
+        // TODO add your handling code here:
+        set_lbl("3");
+    }//GEN-LAST:event_jButton50ActionPerformed
+
+    private void jButton51ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton51ActionPerformed
+        // TODO add your handling code here:
+        set_lbl("4");
+    }//GEN-LAST:event_jButton51ActionPerformed
+
+    private void jButton52ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton52ActionPerformed
+        // TODO add your handling code here:
+        set_lbl("5");
+    }//GEN-LAST:event_jButton52ActionPerformed
+
+    private void jButton53ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton53ActionPerformed
+        // TODO add your handling code here:
+        set_lbl("6");
+    }//GEN-LAST:event_jButton53ActionPerformed
+
+    private void jButton54ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton54ActionPerformed
+        // TODO add your handling code here:
+        set_lbl("7");
+    }//GEN-LAST:event_jButton54ActionPerformed
+
+    private void jButton55ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton55ActionPerformed
+        // TODO add your handling code here:
+        set_lbl("8");
+    }//GEN-LAST:event_jButton55ActionPerformed
+
+    private void jButton56ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton56ActionPerformed
+        // TODO add your handling code here:
+        set_lbl("9");
+    }//GEN-LAST:event_jButton56ActionPerformed
+
+    private void jButton57ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton57ActionPerformed
+        // TODO add your handling code here:
+        set_lbl("0");
+    }//GEN-LAST:event_jButton57ActionPerformed
+
+    private void tbl_sMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_sMouseClicked
+        // TODO add your handling code here:set_n()
+
+
+        removes();
+        set_n();
+
+
+    }//GEN-LAST:event_tbl_sMouseClicked
+
+    private void tf_typeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tf_typeKeyReleased
+        // TODO add your handling code here:
+        set_key();
+    }//GEN-LAST:event_tf_typeKeyReleased
+
+    private void jButton87ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton87ActionPerformed
+        // TODO add your handling code here:
+        sponsor();
+    }//GEN-LAST:event_jButton87ActionPerformed
+
+    private void tf_typeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_typeActionPerformed
+        // TODO add your handling code here:
+
+        sponsor();
+        set_key();
+    }//GEN-LAST:event_tf_typeActionPerformed
+
+    private void tbl_sMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_sMousePressed
+        // TODO add your handling code here:
+//       removes();
+    }//GEN-LAST:event_tbl_sMousePressed
+
+    private void lbl_stateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_stateMouseClicked
+        // TODO add your handling code here:
+        p_input = 4;
+//        tf_type.setText("");
+//        lbl_state.setText("");
+        if (p_btn == 5 && p_input == 4) {
+            tf_type.setText("");
+        }
+
+        tf_type.setFocusable(true);
+        tf_type.grabFocus();
+        set_table_tg();
+        set_bg_lbl();
+    }//GEN-LAST:event_lbl_stateMouseClicked
+
+    private void btn_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_1ActionPerformed
+        // TODO add your handling code here:
+         set_lbl("Q");
+    }//GEN-LAST:event_btn_1ActionPerformed
+
+    private void btn_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_2ActionPerformed
+        // TODO add your handling code here:
+         set_lbl("W");
+    }//GEN-LAST:event_btn_2ActionPerformed
+
+    private void btn_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_3ActionPerformed
+        // TODO add your handling code here:
+         set_lbl("E");
+    }//GEN-LAST:event_btn_3ActionPerformed
+
+    private void btn_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_4ActionPerformed
+        // TODO add your handling code here:
+         set_lbl("R");
+    }//GEN-LAST:event_btn_4ActionPerformed
+
+    private void btn_5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_5ActionPerformed
+        // TODO add your handling code here:
+         set_lbl("T");
+    }//GEN-LAST:event_btn_5ActionPerformed
+
+    private void btn_6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_6ActionPerformed
+        // TODO add your handling code here:
+         set_lbl("Y");
+    }//GEN-LAST:event_btn_6ActionPerformed
+
+    private void btn_7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_7ActionPerformed
+        // TODO add your handling code here:
+         set_lbl("U");
+    }//GEN-LAST:event_btn_7ActionPerformed
+
+    private void btn_8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_8ActionPerformed
+        // TODO add your handling code here:
+         set_lbl("I");
+    }//GEN-LAST:event_btn_8ActionPerformed
+
+    private void btn_9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_9ActionPerformed
+        // TODO add your handling code here:
+         set_lbl("O");
+    }//GEN-LAST:event_btn_9ActionPerformed
+
+    private void btn_10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_10ActionPerformed
+        // TODO add your handling code here:
+         set_lbl("P");
+    }//GEN-LAST:event_btn_10ActionPerformed
+
+    private void btn_11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_11ActionPerformed
+        // TODO add your handling code here:
+         set_lbl("A");
+    }//GEN-LAST:event_btn_11ActionPerformed
+
+    private void btn_12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_12ActionPerformed
+        // TODO add your handling code here:
+         set_lbl("S");
+    }//GEN-LAST:event_btn_12ActionPerformed
+
+    private void btn_13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_13ActionPerformed
+        // TODO add your handling code here:
+         set_lbl("D");
+    }//GEN-LAST:event_btn_13ActionPerformed
+
+    private void btn_15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_15ActionPerformed
+        // TODO add your handling code here:
+         set_lbl("G");
+    }//GEN-LAST:event_btn_15ActionPerformed
+
+    private void btn_14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_14ActionPerformed
+        // TODO add your handling code here:
+         set_lbl("F");
+    }//GEN-LAST:event_btn_14ActionPerformed
+
+    private void btn_16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_16ActionPerformed
+        // TODO add your handling code here:
+         set_lbl("H");
+    }//GEN-LAST:event_btn_16ActionPerformed
+
+    private void btn_17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_17ActionPerformed
+        // TODO add your handling code here:
+         set_lbl("J");
+    }//GEN-LAST:event_btn_17ActionPerformed
+
+    private void btn_18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_18ActionPerformed
+        // TODO add your handling code here:
+         set_lbl("K");
+    }//GEN-LAST:event_btn_18ActionPerformed
+
+    private void btn_19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_19ActionPerformed
+        // TODO add your handling code here:
+         set_lbl("L");
+    }//GEN-LAST:event_btn_19ActionPerformed
+
+    private void btn_21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_21ActionPerformed
+        // TODO add your handling code here:
+         set_lbl("X");
+    }//GEN-LAST:event_btn_21ActionPerformed
+
+    private void btn_22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_22ActionPerformed
+        // TODO add your handling code here:
+         set_lbl("C");
+    }//GEN-LAST:event_btn_22ActionPerformed
+
+    private void btn_23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_23ActionPerformed
+        // TODO add your handling code here:
+         set_lbl("V");
+    }//GEN-LAST:event_btn_23ActionPerformed
+
+    private void btn_24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_24ActionPerformed
+        // TODO add your handling code here:
+         set_lbl("B");
+    }//GEN-LAST:event_btn_24ActionPerformed
+
+    private void btn_25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_25ActionPerformed
+        // TODO add your handling code here:
+         set_lbl("N");
+    }//GEN-LAST:event_btn_25ActionPerformed
+
+    private void btn_26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_26ActionPerformed
+        // TODO add your handling code here:
+         set_lbl("M");
+    }//GEN-LAST:event_btn_26ActionPerformed
+
+    private void jButton58ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton58ActionPerformed
+        // TODO add your handling code here:
+         set_lbl(" ");
+    }//GEN-LAST:event_jButton58ActionPerformed
+
+    private void jButton59ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton59ActionPerformed
+        // TODO add your handling code here:
+        if(caps==1){
+            caps=0;
+        }else{
+            caps=1;
+        }
+    }//GEN-LAST:event_jButton59ActionPerformed
+    /**
+     * @param args the command line arguments
+     */
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_1;
+    private javax.swing.JButton btn_10;
+    private javax.swing.JButton btn_11;
+    private javax.swing.JButton btn_12;
+    private javax.swing.JButton btn_13;
+    private javax.swing.JButton btn_14;
+    private javax.swing.JButton btn_15;
+    private javax.swing.JButton btn_16;
+    private javax.swing.JButton btn_17;
+    private javax.swing.JButton btn_18;
+    private javax.swing.JButton btn_19;
+    private javax.swing.JButton btn_2;
+    private javax.swing.JButton btn_20;
+    private javax.swing.JButton btn_21;
+    private javax.swing.JButton btn_22;
+    private javax.swing.JButton btn_23;
+    private javax.swing.JButton btn_24;
+    private javax.swing.JButton btn_25;
+    private javax.swing.JButton btn_26;
+    private javax.swing.JButton btn_3;
+    private javax.swing.JButton btn_4;
+    private javax.swing.JButton btn_5;
+    private javax.swing.JButton btn_6;
+    private javax.swing.JButton btn_7;
+    private javax.swing.JButton btn_8;
+    private javax.swing.JButton btn_9;
+    private javax.swing.JButton btn_comm;
+    private javax.swing.JButton btn_don;
+    private javax.swing.JButton btn_pm;
+    private javax.swing.JButton btn_req;
+    private javax.swing.JButton btn_tg;
+    private javax.swing.JButton btn_tra;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton13;
+    private javax.swing.JButton jButton14;
+    private javax.swing.JButton jButton15;
+    private javax.swing.JButton jButton16;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton48;
+    private javax.swing.JButton jButton49;
+    private javax.swing.JButton jButton50;
+    private javax.swing.JButton jButton51;
+    private javax.swing.JButton jButton52;
+    private javax.swing.JButton jButton53;
+    private javax.swing.JButton jButton54;
+    private javax.swing.JButton jButton55;
+    private javax.swing.JButton jButton56;
+    private javax.swing.JButton jButton57;
+    private javax.swing.JButton jButton58;
+    private javax.swing.JButton jButton59;
+    private javax.swing.JButton jButton85;
+    private javax.swing.JButton jButton86;
+    private javax.swing.JButton jButton87;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lbl_amount;
+    private javax.swing.JLabel lbl_date;
+    private javax.swing.JLabel lbl_name;
+    private javax.swing.JLabel lbl_sp;
+    private javax.swing.JTextArea lbl_state;
+    private javax.swing.JLabel lbl_time;
+    private javax.swing.JTable tbl_s;
+    private javax.swing.JTextField tf_type;
+    // End of variables declaration//GEN-END:variables
+
+    private void myInit() {
+        init_key();
+        lbl_state.enable(false);
+        p_btn = 1;
+        set_bg_btn();
+        set_bg_lbl();
+        set_table_tg();
+
+        set_n();
+    }
+
+    private void clear() {
+        tf_type.setText("");
+        lbl_name.setText("");
+        lbl_state.setText("");
+        lbl_time.setText("");
+        sponsors.clear();
+        p_input = 1;
+        set_bg_lbl();
+        tf_type.setFocusable(false);
+        set_table_tg();
+    }
+
+    private void clear_1() {
+        tf_type.setText("");
+        lbl_name.setText("");
+//        lbl_state.setText("");
+//        lbl_time.setText("");
+
+
+    }
+    List<String> sponsors = new ArrayList();
+
+    private void set_table_tg() {
+
+        String[] col_names = new String[1];
+        List<String[]> datas = new ArrayList();
+
+        int[] col_editable = {};
+        int[] col_to_center = {};
+        int[] col_to_right = {};
+        if (p_input == 1) {
+            col_names = TableAdapter_mass.payroll_col_names("DATE");
+            datas = TableAdapter_mass.date_data();
+
+
+        }
+        if (p_input == 2) {
+            col_names = TableAdapter_mass.payroll_col_names("TIME");
+            datas = TableAdapter_mass.time_data();
+
+        }
+        if (p_input == 3) {
+            col_names = TableAdapter_mass.payroll_col_names("");
+
+        }
+        if (p_input == 4) {
+
+            if (p_btn == 1 || p_btn == 2 || p_btn == 3) {
+                col_names = TableAdapter_mass.payroll_col_names("MESSAGE");
+
+                datas = TableAdapter_mass.message_data();
+
+            }
+            if (p_btn == 4) {
+                col_names = TableAdapter_mass.payroll_col_names("FOR THE SOULDS OF");
+//                System.out.println(sponsors.size());
+
+                datas = TableAdapter_mass.sponsor_data(sponsors);
+
+//                sponsor();
+            }
+        }
+        if (p_btn == 4 && p_input == 1) {
+            col_names = TableAdapter_mass.payroll_col_names("DATE");
+            datas = TableAdapter_mass.date_data();
+//                sponsor();
+        }
+
+        TableAdapter_mass.set_table(tbl_s, col_names, datas, col_editable, col_to_center, col_to_right);
+        if (!datas.isEmpty()) {
+            tbl_s.setRowSelectionInterval(0, 0);
+        }
+//        tbl_s.setRowSelectionInterval(0, 0);
+        tbl_s.setRowHeight(40);
+        tbl_s.getTableHeader().setFont(new java.awt.Font("Arial", Font.BOLD, 12));
+        tbl_s.setFont(new java.awt.Font("Arial", 1, 12));
+        TableUtility.align_column_to_Center(tbl_s, 0);
+        TableUtility.align_row_to_Center(tbl_s, 0);
+
+    }
+
+    public void do_pass() {
+    }
+    // <editor-fold defaultstate="collapsed" desc="Key">
+
+    private void disposed() {
+        this.dispose();
+    }
+
+    private void init_key() {
+        KeyMapping.mapKeyWIFW(getSurface(),
+                KeyEvent.VK_ESCAPE, new KeyAction() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+//                btn_0.doClick();
+                disposed();
+            }
+        });
+    }
+    // </editor-fold>
+    int p_input = 1;
+
+    private void set_bg_lbl() {
+        if (p_input == 1) {
+            lbl_date.setBackground(new java.awt.Color(102, 255, 0));
+
+            lbl_time.setBackground(new java.awt.Color(240, 240, 240));
+            lbl_name.setBackground(new java.awt.Color(240, 240, 240));
+            lbl_state.setBackground(new java.awt.Color(240, 240, 240));
+        }
+        if (p_input == 2) {
+            lbl_time.setBackground(new java.awt.Color(102, 255, 0));
+
+            lbl_date.setBackground(new java.awt.Color(240, 240, 240));
+            lbl_name.setBackground(new java.awt.Color(240, 240, 240));
+            lbl_state.setBackground(new java.awt.Color(240, 240, 240));
+
+        }
+        if (p_input == 3) {
+            lbl_name.setBackground(new java.awt.Color(102, 255, 0));
+
+            lbl_time.setBackground(new java.awt.Color(240, 240, 240));
+            lbl_date.setBackground(new java.awt.Color(240, 240, 240));
+            lbl_state.setBackground(new java.awt.Color(240, 240, 240));
+        }
+        if (p_input == 4) {
+            lbl_state.setBackground(new java.awt.Color(102, 255, 0));
+
+            lbl_time.setBackground(new java.awt.Color(240, 240, 240));
+            lbl_name.setBackground(new java.awt.Color(240, 240, 240));
+            lbl_date.setBackground(new java.awt.Color(240, 240, 240));
+        }
+
+
+
+    }
+    int p_btn = 1;
+
+    private void set_bg_btn() {
+
+//        JButton[] btn1 = {btn_tg, btn_pm, btn_comm, btn_req, btn_don, btn_pm};
+        if (p_btn == 1) {
+            btn_tg.setBackground(new java.awt.Color(102, 255, 0));
+
+            btn_pm.setBackground(new java.awt.Color(240, 240, 240));
+            btn_comm.setBackground(new java.awt.Color(240, 240, 240));
+            btn_req.setBackground(new java.awt.Color(240, 240, 240));
+            btn_don.setBackground(new java.awt.Color(240, 240, 240));
+            btn_tra.setBackground(new java.awt.Color(240, 240, 240));
+
+            lbl_sp.setText("MESSAGE:");
+        }
+        if (p_btn == 2) {
+            btn_pm.setBackground(new java.awt.Color(102, 255, 0));
+
+            btn_tg.setBackground(new java.awt.Color(240, 240, 240));
+            btn_comm.setBackground(new java.awt.Color(240, 240, 240));
+            btn_req.setBackground(new java.awt.Color(240, 240, 240));
+            btn_don.setBackground(new java.awt.Color(240, 240, 240));
+            btn_tra.setBackground(new java.awt.Color(240, 240, 240));
+            lbl_sp.setText("MESSAGE:");
+        }
+        if (p_btn == 3) {
+            btn_comm.setBackground(new java.awt.Color(102, 255, 0));
+
+            btn_tg.setBackground(new java.awt.Color(240, 240, 240));
+            btn_pm.setBackground(new java.awt.Color(240, 240, 240));
+            btn_req.setBackground(new java.awt.Color(240, 240, 240));
+            btn_don.setBackground(new java.awt.Color(240, 240, 240));
+            btn_tra.setBackground(new java.awt.Color(240, 240, 240));
+            lbl_sp.setText("MESSAGE:");
+        }
+
+        if (p_btn == 4) {
+            btn_req.setBackground(new java.awt.Color(102, 255, 0));
+
+            btn_tg.setBackground(new java.awt.Color(240, 240, 240));
+            btn_pm.setBackground(new java.awt.Color(240, 240, 240));
+            btn_comm.setBackground(new java.awt.Color(240, 240, 240));
+            btn_don.setBackground(new java.awt.Color(240, 240, 240));
+            btn_tra.setBackground(new java.awt.Color(240, 240, 240));
+            lbl_sp.setText("SOUL OF:");
+        }
+        if (p_btn == 5) {
+            btn_don.setBackground(new java.awt.Color(102, 255, 0));
+
+            btn_tg.setBackground(new java.awt.Color(240, 240, 240));
+            btn_pm.setBackground(new java.awt.Color(240, 240, 240));
+            btn_comm.setBackground(new java.awt.Color(240, 240, 240));
+            btn_req.setBackground(new java.awt.Color(240, 240, 240));
+            btn_tra.setBackground(new java.awt.Color(240, 240, 240));
+            lbl_sp.setText("AMOUNT:");
+        }
+        if (p_btn == 6) {
+            btn_tra.setBackground(new java.awt.Color(102, 255, 0));
+
+            btn_tg.setBackground(new java.awt.Color(240, 240, 240));
+            btn_pm.setBackground(new java.awt.Color(240, 240, 240));
+            btn_comm.setBackground(new java.awt.Color(240, 240, 240));
+            btn_req.setBackground(new java.awt.Color(240, 240, 240));
+            btn_don.setBackground(new java.awt.Color(240, 240, 240));
+            lbl_sp.setText("AMOUNT:");
+        }
+
+    }
+
+    int caps=1;
+    private void set_lbl(String text) {
+        if(caps==1){
+            text=text.toUpperCase();
+        }else{
+            text=text.toLowerCase();
+        }
+        String n = tf_type.getText();
+        n = n + text;
+        tf_type.setText(n);
+        if (p_input == 3) {
+            lbl_name.setText(n);
+        }
+        if (p_input == 4) {
+            lbl_state.setText(TableAdapter_mass.add_string(sponsors));
+        }
+    }
+
+    private void set_key() {
+        String n = tf_type.getText();
+//        n = n + text;
+//        tf_type.setText(n);
+
+
+        if (p_btn == 1 || p_btn == 2 || p_btn == 3) {
+            if (p_input == 1) {
+                lbl_date.setText(n);
+            }
+            if (p_input == 2) {
+                lbl_time.setText(n);
+            }
+            if (p_input == 3) {
+                lbl_name.setText(n);
+            }
+            if (p_input == 4) {
+                int row = tbl_s.getSelectedRow();
+                if (row < 0) {
+                    return;
+                }
+                String name = tbl_s.getModel().getValueAt(row, 0).toString();
+                lbl_state.setText(name + " " + tf_type.getText());
+            }
+        }
+        if (p_btn == 4) {
+//            }
+            if (p_input == 3) {
+                lbl_name.setText(n);
+            }
+            if (p_input == 4) {
+                lbl_state.setText(TableAdapter_mass.add_string(sponsors));
+            }
+
+        }
+        if (p_btn == 5) {
+            if (p_input == 3) {
+                lbl_name.setText(n);
+            }
+            if (p_input == 4) {
+                lbl_state.setText(n);
+                lbl_amount.setText(FitIn.fmt_wc_0(FitIn.toDouble(n)));
+            }
+
+        }
+
+    }
+
+    private void sponsor() {
+        String n = tf_type.getText();
+        if (n.isEmpty()) {
+            return;
+        } else {
+            if (p_btn == 4 && p_input == 4) {
+                sponsors.add(n);
+                compute_requiem_cost();
+                set_table_tg();
+            }
+        }
+
+
+    }
+    Date pressedtime;
+    long timeClicked;
+
+    private void set_n() {
+
+
+        if (p_btn == 1 || p_btn == 2 || p_btn == 3) {
+            if (p_input == 1) {
+                int row = tbl_s.getSelectedRow();
+                if (row < 0) {
+                    return;
+                }
+                String name = tbl_s.getModel().getValueAt(row, 0).toString();
+
+                lbl_date.setText(name);
+            }
+            if (p_input == 2) {
+                int row = tbl_s.getSelectedRow();
+                if (row < 0) {
+                    return;
+                }
+                String name = tbl_s.getModel().getValueAt(row, 0).toString();
+
+                lbl_time.setText(name);
+            }
+            if (p_input == 3) {
+//                lbl_name.setText("");
+                tf_type.setText(lbl_name.getText());
+            }
+            if (p_input == 4) {
+                lbl_state.setText(tf_type.getText());
+            }
+        }
+
+        if (p_btn == 4) {
+            if (p_input == 1) {
+                int row = tbl_s.getSelectedRow();
+                if (row < 0) {
+                    return;
+                }
+                String name = tbl_s.getModel().getValueAt(row, 0).toString();
+
+                lbl_date.setText(name);
+            }
+            if (p_input == 2) {
+                int row = tbl_s.getSelectedRow();
+                if (row < 0) {
+                    return;
+                }
+                String name = tbl_s.getModel().getValueAt(row, 0).toString();
+
+                lbl_time.setText(name);
+            }
+            if (p_input == 3) {
+//                lbl_name.setText("");
+                tf_type.setText(lbl_name.getText());
+            }
+            if (p_input == 4) {
+                lbl_state.setText(TableAdapter_mass.add_string(sponsors));
+            }
+
+        }
+
+
+    }
+
+    private void removes() {
+
+        if (p_btn == 4 && p_input == 4) {
+            int row = tbl_s.getSelectedRow();
+            if (row < 0) {
+//                return;
+            } else {
+                sponsors.remove(row);
+                set_table_tg();
+                set_key();
+            }
+            compute_requiem_cost();
+        }
+    }
+
+    private void set_cost() {
+        if (p_btn == 1) {
+            lbl_amount.setText("100.00");
+        }
+        if (p_btn == 2) {
+            lbl_amount.setText("100.00");
+        }
+        if (p_btn == 3) {
+            lbl_amount.setText("100.00");
+        }
+        if (p_btn == 4) {
+            lbl_amount.setText("0.00");
+        }
+        if (p_btn == 5) {
+            lbl_amount.setText("0.00");
+        }
+        if (p_btn == 6) {
+            lbl_amount.setText("0.00");
+        }
+    }
+
+    private void compute_requiem_cost() {
+        int size = sponsors.size();
+        double am = 100 * size;
+        lbl_amount.setText(FitIn.fmt_wc_0(am));
+    }
+    
+}

@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="1008" pageHeight="612" orientation="Landscape" columnWidth="1008" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="1070"/>
+	<parameter name="day" class="java.lang.String"/>
+	<parameter name="month" class="java.lang.String"/>
+	<parameter name="year" class="java.lang.String"/>
+	<parameter name="priest" class="java.lang.String"/>
+	<parameter name="asst_priest" class="java.lang.String"/>
+	<parameter name="series_of" class="java.lang.String"/>
+	<parameter name="g_ref_no" class="java.lang.String"/>
+	<parameter name="b_ref_no" class="java.lang.String"/>
+	<parameter name="g_address" class="java.lang.String"/>
+	<parameter name="b_address" class="java.lang.String"/>
+	<parameter name="path" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select  
+ Concat(p.g_fname,space(1),p.g_mi,space(1),p.g_lname ) as groom  
+ ,p.g_father as groom_father
+ ,p.g_mother as groom_mother
+ ,Concat(p.b_fname,space(1),p.b_mi,space(1),p.b_lname ) as bride  
+ ,p.b_father as bride_father
+ ,p.b_mother as bride_mother   
+ ,p.marr_date as date_of_marriage
+ ,p.marr_time 
+ ,p.priest as solemnized_by
+ ,p.book_no as book_number
+ ,p.page_no as page_number    
+ ,p.date_added   
+ ,GROUP_CONCAT(o.sponsor SEPARATOR ', ') as name
+
+from db_bulletin.marriage_1 p
+left join db_bulletin.marriage_1_sponsors o
+on p.g_ref_no= o.g_ref_no and p.b_ref_no=o.b_ref_no
+where p.g_ref_no= $P{g_ref_no} and p.b_ref_no=$P{b_ref_no}]]>
+	</queryString>
+	<field name="groom" class="java.lang.String"/>
+	<field name="groom_father" class="java.lang.String"/>
+	<field name="groom_mother" class="java.lang.String"/>
+	<field name="bride" class="java.lang.String"/>
+	<field name="bride_father" class="java.lang.String"/>
+	<field name="bride_mother" class="java.lang.String"/>
+	<field name="date_of_marriage" class="java.sql.Date"/>
+	<field name="marr_time" class="java.lang.String"/>
+	<field name="solemnized_by" class="java.lang.String"/>
+	<field name="book_number" class="java.lang.Integer"/>
+	<field name="page_number" class="java.lang.Integer"/>
+	<field name="date_added" class="java.sql.Timestamp"/>
+	<field name="name" class="java.lang.String"/>
+	<background>
+		<band height="612" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="504" height="612"/>
+				<imageExpression><![CDATA[$P{path}+"marr_template.png"]]></imageExpression>
+			</image>
+		</band>
+	</background>
+	<title>
+		<band height="433" splitType="Stretch">
+			<staticText>
+				<reportElement x="126" y="32" width="285" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DIOCESE OF DUMAGUETE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="126" y="47" width="285" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ST. CATHERINE OF ALEXANDRIA PARISH]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="126" y="59" width="285" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10"/>
+				</textElement>
+				<text><![CDATA[CATHEDRAL , DUMAGUETE CITY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="126" y="73" width="285" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10"/>
+				</textElement>
+				<text><![CDATA[TEL. NO. 255-4649 / 422- 7765]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="126" y="149" width="285" height="12"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[This is to certify that]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="136" y="165" width="247" height="12"/>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{groom}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="73" y="194" width="93" height="12"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[FATHER'S NAME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="73" y="209" width="93" height="12"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[MOTHER'S NAME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="73" y="226" width="93" height="12"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[ADDRESS]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="177" y="194" width="293" height="12"/>
+				<box>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{groom_father}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="177" y="210" width="293" height="12"/>
+				<box>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{groom_mother}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="177" y="226" width="293" height="12"/>
+				<box>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{g_address}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="73" y="343" width="397" height="19"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[Were married canonically at the St. Catherine of Alexandria Cathedral Parish, ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="73" y="362" width="387" height="12"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[Dumaguete City.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="136" y="178" width="247" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[(GROOM)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="73" y="290" width="93" height="12"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[FATHER'S NAME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="73" y="320" width="93" height="12"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[ADDRESS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="73" y="305" width="93" height="12"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[MOTHER'S NAME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="136" y="273" width="250" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[(BRIDE)]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="136" y="258" width="250" height="12"/>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bride}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="177" y="290" width="293" height="12"/>
+				<box>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bride_father}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="177" y="305" width="293" height="12"/>
+				<box>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bride_mother}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="177" y="320" width="293" height="12"/>
+				<box>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{b_address}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="73" y="378" width="104" height="12"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[DATE OF MARRIAGE]]></text>
+			</staticText>
+			<textField pattern="EEE, MMM d, &apos;&apos;yy">
+				<reportElement x="177" y="378" width="141" height="12"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{date_of_marriage}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="73" y="394" width="104" height="12"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[SOLEMNIZED BY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="213" y="242" width="105" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[and]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="77" y="418" width="88" height="12"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[SPONSORS]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="177" y="394" width="293" height="12"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{solemnized_by}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="12" splitType="Stretch">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="93" y="0" width="340" height="12"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="119" splitType="Stretch">
+			<staticText>
+				<reportElement x="77" y="8" width="416" height="19"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[In witness whereof, hereunto I affixed my signature and the seal of the Parish this]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="115" y="27" width="55" height="12"/>
+				<box>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{day}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="170" y="27" width="28" height="12"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[day of]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="199" y="27" width="97" height="12"/>
+				<box>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{month}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="306" y="27" width="59" height="12"/>
+				<box>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{year}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="314" y="64" width="152" height="12"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[PARISH PRIEST]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="78" y="90" width="48" height="12"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[BOOK NO.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="321" y="91" width="44" height="12"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[PAGE NO.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="126" y="91" width="100" height="12"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{book_number}.toString()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="370" y="91" width="90" height="12"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{page_number}.toString()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="314" y="51" width="150" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{priest}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="296" y="27" width="18" height="12"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[,]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

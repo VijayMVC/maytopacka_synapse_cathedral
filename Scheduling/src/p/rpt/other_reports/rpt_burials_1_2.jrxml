@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="1008" pageHeight="612" orientation="Landscape" columnWidth="1008" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="182"/>
+	<parameter name="num" class="java.lang.String"/>
+	<parameter name="day" class="java.lang.String"/>
+	<parameter name="month" class="java.lang.String"/>
+	<parameter name="year" class="java.lang.String"/>
+	<parameter name="priest" class="java.lang.String"/>
+	<parameter name="asst_priest" class="java.lang.String"/>
+	<parameter name="series_of" class="java.lang.String"/>
+	<parameter name="path" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select 
+
+ concat(f.fname,space(2),f.mi,space(2),f.lname) as name
+,p.address1 as address
+,f.funeral_date as scheduled_date
+,f.priest
+,f.cause_of_death
+,f.date_died as date_died
+,f.place_buried as buried_at
+,f.book_no
+,f.page_no
+from db_bulletin.funeral_1 f
+join db_bulletin.parishioners_1 p
+on f.ref_no=p.ref_id
+ where  f.ref_no=$P{num};]]>
+	</queryString>
+	<field name="name" class="java.lang.String"/>
+	<field name="address" class="java.lang.String"/>
+	<field name="scheduled_date" class="java.sql.Date"/>
+	<field name="priest" class="java.lang.String"/>
+	<field name="cause_of_death" class="java.lang.String"/>
+	<field name="date_died" class="java.sql.Date"/>
+	<field name="buried_at" class="java.lang.String"/>
+	<field name="book_no" class="java.lang.Integer"/>
+	<field name="page_no" class="java.lang.Integer"/>
+	<background>
+		<band height="612" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="506" height="612"/>
+				<imageExpression><![CDATA[$P{path}+"burial_template.png"]]></imageExpression>
+			</image>
+		</band>
+	</background>
+	<title>
+		<band height="150" splitType="Stretch">
+			<staticText>
+				<reportElement x="124" y="68" width="247" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="12"/>
+				</textElement>
+				<text><![CDATA[TEL. NO. 255-4649 / 422- 7765]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="124" y="42" width="285" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ST. CATHERINE OF ALEXANDRIA PARISH]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="155" y="27" width="197" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DIOCESE OF DUMAGUETE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="124" y="54" width="247" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="12"/>
+				</textElement>
+				<text><![CDATA[CATHEDRAL , DUMAGUETE CITY]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="441" splitType="Stretch">
+			<staticText>
+				<reportElement x="88" y="49" width="113" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Name of Deceased:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="88" y="72" width="112" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Address:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="103" y="146" width="98" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[was burried at the]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="88" y="95" width="112" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Cause of Death:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="88" y="170" width="112" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Date of Burial:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="88" y="196" width="112" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Parish Priest:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="90" y="245" width="335" height="22"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[In Witness thereof hereunto I affix my signature and the seal of the Parish this ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="90" y="265" width="34" height="20"/>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{day}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="124" y="265" width="31" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[day of]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="155" y="265" width="70" height="20"/>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{month}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="233" y="266" width="48" height="20"/>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{year}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="90" y="382" width="52" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Book No:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="91" y="402" width="51" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Page No:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="257" y="337" width="190" height="20"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Parish Priest]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="257" y="317" width="190" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{priest}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="201" y="49" width="246" height="20"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="201" y="72" width="246" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{address}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="201" y="95" width="246" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cause_of_death}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="201" y="146" width="246" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{buried_at}]]></textFieldExpression>
+			</textField>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="201" y="170" width="246" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{scheduled_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="201" y="196" width="246" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{priest}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="148" y="382" width="100" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{book_no}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="148" y="402" width="100" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{page_no}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="88" y="118" width="112" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Date of Death:]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="201" y="119" width="116" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{date_died}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="124" y="0" width="247" height="27"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[THIS IS TO CERTIFY THAT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="223" y="265" width="14" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[,]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

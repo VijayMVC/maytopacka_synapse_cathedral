@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="date_from" class="java.util.Date"/>
+	<parameter name="printed_by" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select
+  mass_sched_number
+ ,mass_type
+ ,scheduled_time
+ ,scheduled_date
+ ,priest_number
+ ,priest
+ ,choir
+from db_bulletin.mass_schedules
+where Date(scheduled_date)= date($P{date_from});]]>
+	</queryString>
+	<field name="mass_sched_number" class="java.lang.Integer"/>
+	<field name="mass_type" class="java.lang.String"/>
+	<field name="scheduled_time" class="java.lang.String"/>
+	<field name="scheduled_date" class="java.sql.Date"/>
+	<field name="priest_number" class="java.lang.Integer"/>
+	<field name="priest" class="java.lang.String"/>
+	<field name="choir" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="123" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Transparent" x="335" y="98" width="44" height="25"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Date:]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement mode="Transparent" x="379" y="98" width="176" height="25"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{date_from}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="132" y="20" width="282" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Parish of St. Catherine of Alexandria]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="132" y="40" width="282" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Cathedral, Dumaguete City]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="132" y="0" width="282" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[DIOCESE OF DUMAGUETE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="132" y="60" width="282" height="23"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MASS SCHEDULE]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Transparent" x="198" y="41" width="309" height="20"/>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[PRIEST]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="0" y="41" width="183" height="20"/>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[TIME]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement mode="Transparent" x="0" y="0" width="183" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{scheduled_time}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="198" y="0" width="309" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{priest}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="134" splitType="Stretch">
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="68" y="99" width="140" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="67" width="70" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[Printed by:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="99" width="70" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Date Printed:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="70" y="67" width="166" height="20"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{printed_by}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

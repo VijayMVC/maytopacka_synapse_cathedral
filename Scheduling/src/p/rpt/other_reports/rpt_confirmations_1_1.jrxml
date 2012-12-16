@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="1008" pageHeight="612" orientation="Landscape" columnWidth="1008" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="num" class="java.lang.String"/>
+	<parameter name="day" class="java.lang.String"/>
+	<parameter name="month" class="java.lang.String"/>
+	<parameter name="year" class="java.lang.String"/>
+	<parameter name="priest" class="java.lang.String"/>
+	<parameter name="asst_priest" class="java.lang.String"/>
+	<parameter name="series_of" class="java.lang.String"/>
+	<parameter name="path" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select
+
+ concat(p.fname,space(1),p.mi,space(1),p.lname)  as name      
+ ,p.father            
+ ,p.mother         
+ ,p.conf_date  as date_of_confirmation        
+ ,p.book_no            
+ ,p.page_no    
+ ,p.priest as confirmed_by
+ ,GROUP_CONCAT(o.sponsor Separator ', ') as sponsor_name
+
+from db_bulletin.confirmation_1  p 
+left join db_bulletin.confirmation_1_sponsors o
+on p.ref_no=o.ref_no
+where p.ref_no=$P{num} limit 4;]]>
+	</queryString>
+	<field name="name" class="java.lang.String"/>
+	<field name="father" class="java.lang.String"/>
+	<field name="mother" class="java.lang.String"/>
+	<field name="date_of_confirmation" class="java.sql.Date"/>
+	<field name="book_no" class="java.lang.Integer"/>
+	<field name="page_no" class="java.lang.Integer"/>
+	<field name="confirmed_by" class="java.lang.String"/>
+	<field name="sponsor_name" class="java.lang.String"/>
+	<background>
+		<band height="612" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="505" height="612"/>
+				<imageExpression><![CDATA[$P{path}+"conf_template.png"]]></imageExpression>
+			</image>
+		</band>
+	</background>
+	<title>
+		<band height="152" splitType="Stretch">
+			<staticText>
+				<reportElement x="133" y="42" width="285" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ST. CATHERINE OF ALEXANDRIA PARISH]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="164" y="26" width="197" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DIOCESE OF DUMAGUETE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="133" y="57" width="247" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="12"/>
+				</textElement>
+				<text><![CDATA[CATHEDRAL , DUMAGUETE CITY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="133" y="72" width="247" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="12"/>
+				</textElement>
+				<text><![CDATA[TEL. NO. 255-4649 / 422- 7765]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="171" splitType="Stretch">
+			<staticText>
+				<reportElement x="101" y="22" width="104" height="20"/>
+				<textElement verticalAlignment="Bottom"/>
+				<text><![CDATA[Name of Confirmand:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="101" y="42" width="104" height="20"/>
+				<textElement verticalAlignment="Bottom"/>
+				<text><![CDATA[Name of Father:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="101" y="62" width="104" height="20"/>
+				<textElement verticalAlignment="Bottom"/>
+				<text><![CDATA[Name of Mother:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="101" y="103" width="104" height="20"/>
+				<textElement verticalAlignment="Bottom"/>
+				<text><![CDATA[Confirmed by:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="206" y="22" width="245" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Bottom">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="206" y="42" width="245" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Bottom">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{father}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="206" y="62" width="245" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Bottom">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mother}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="103" y="147" width="127" height="20"/>
+				<textElement verticalAlignment="Bottom"/>
+				<text><![CDATA[Sponsors]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="206" y="103" width="245" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Bottom">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{confirmed_by}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="101" y="82" width="104" height="20"/>
+				<textElement verticalAlignment="Bottom"/>
+				<text><![CDATA[Date of Confirmation:]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="206" y="82" width="245" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Bottom">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{date_of_confirmation}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement x="102" y="0" width="342" height="15"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$F{sponsor_name}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="16" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="220" splitType="Stretch">
+			<staticText>
+				<reportElement x="105" y="39" width="387" height="20"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[In witness therof, I hereunto affixed my signature and the seal of the Parish this ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="105" y="59" width="36" height="20"/>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{day}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="173" y="59" width="87" height="20"/>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{month}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="273" y="59" width="62" height="20"/>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{year}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="141" y="59" width="32" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom"/>
+				<text><![CDATA[day of]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="95" y="167" width="59" height="20"/>
+				<textElement verticalAlignment="Bottom"/>
+				<text><![CDATA[Book No:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="95" y="187" width="59" height="20"/>
+				<textElement verticalAlignment="Bottom"/>
+				<text><![CDATA[Page No:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="154" y="167" width="100" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Bottom">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{book_no}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="154" y="187" width="100" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Bottom">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{page_no}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="255" y="119" width="178" height="20"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$P{priest}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="255" y="139" width="178" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<text><![CDATA[Parish Priest]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="260" y="59" width="13" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom"/>
+				<text><![CDATA[,]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

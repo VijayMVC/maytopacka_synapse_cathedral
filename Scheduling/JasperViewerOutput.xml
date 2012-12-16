@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperPrint xmlns="http://jasperreports.sourceforge.net/jasperreports/print" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/print http://jasperreports.sourceforge.net/xsd/jasperprint.xsd" name="report name" pageWidth="1008" pageHeight="612" topMargin="0" leftMargin="0" bottomMargin="0" rightMargin="0" orientation="Landscape" locale="en_US" timezone="Asia/Shanghai">
+	<property name="net.sf.jasperreports.export.xml.start.page.index" value="0"/>
+	<property name="net.sf.jasperreports.export.xml.end.page.index" value="0"/>
+	<property name="net.sf.jasperreports.export.xml.page.count" value="1"/>
+	<origin band="background"/>
+	<origin band="title"/>
+	<origin band="pageHeader"/>
+	<origin band="columnHeader"/>
+	<origin band="detail"/>
+	<origin band="columnFooter"/>
+	<origin band="pageFooter"/>
+	<origin band="summary"/>
+	<page>
+		<text textAlignment="Center" verticalAlignment="Middle" textHeight="12.0703125">
+			<reportElement x="126" y="32" width="285" height="14" origin="1" srcId="1"/>
+			<font fontName="Tahoma" size="10" isBold="true"/>
+			<textContent><![CDATA[DIOCESE OF DUMAGUETE]]></textContent>
+		</text>
+		<text textAlignment="Center" verticalAlignment="Middle" textHeight="12.0703125">
+			<reportElement x="126" y="47" width="285" height="14" origin="1" srcId="2"/>
+			<font fontName="Tahoma" size="10" isBold="true"/>
+			<textContent><![CDATA[ST. CATHERINE OF ALEXANDRIA PARISH]]></textContent>
+		</text>
+		<text textAlignment="Center" verticalAlignment="Middle" textHeight="12.0703125">
+			<reportElement x="126" y="59" width="285" height="14" origin="1" srcId="3"/>
+			<font fontName="Tahoma" size="10"/>
+			<textContent><![CDATA[CATHEDRAL , DUMAGUETE CITY]]></textContent>
+		</text>
+		<text textAlignment="Center" verticalAlignment="Middle" textHeight="12.0703125">
+			<reportElement x="126" y="73" width="285" height="14" origin="1" srcId="4"/>
+			<font fontName="Tahoma" size="10"/>
+			<textContent><![CDATA[TEL. NO. 255-4649 / 422- 7765]]></textContent>
+		</text>
+		<text textAlignment="Center" textHeight="10.863281">
+			<reportElement x="136" y="144" width="247" height="14" origin="1" srcId="5"/>
+			<font fontName="Tahoma" size="9" isBold="true"/>
+			<textContent><![CDATA[This is to certify that]]></textContent>
+		</text>
+		<text textAlignment="Center" verticalAlignment="Bottom" textHeight="14.484375">
+			<reportElement x="136" y="157" width="247" height="15" origin="1" srcId="6"/>
+			<box>
+				<bottomPen lineWidth="1.0"/>
+			</box>
+			<font fontName="Tahoma" size="12" isBold="true"/>
+			<textContent><![CDATA[null]]></textContent>
+		</text>
+		<text textAlignment="Left" verticalAlignment="Bottom" textHeight="9.65625">
+			<reportElement x="86" y="190" width="74" height="12" origin="1" srcId="7"/>
+			<font fontName="Tahoma" size="8"/>
+			<textContent><![CDATA[Father's Name:]]></textContent>
+		</text>
+		<text textAlignment="Left" verticalAlignment="Bottom" textHeight="9.65625">
+			<reportElement x="86" y="205" width="74" height="12" origin="1" srcId="8"/>
+			<font fontName="Tahoma" size="8"/>
+			<textContent><![CDATA[Mother's Name:]]></textContent>
+		</text>
+		<text textAlignment="Left" verticalAlignment="Bottom" textHeight="9.65625">
+			<reportElement x="86" y="222" width="74" height="12" origin="1" srcId="9"/>
+			<font fontName="Tahoma" size="8"/>
+			<textContent><![CDATA[Address:]]></textContent>
+		</text>
+		<text verticalAlignment="Bottom" textHeight="9.65625">
+			<reportElement x="160" y="190" width="262" height="12" origin="1" srcId="10"/>
+			<box>
+				<bottomPen lineWidth="0.0"/>
+			</box>
+			<font fontName="Tahoma" size="8"/>
+			<textContent><![CDATA[null]]></textContent>
+		</text>
+		<text verticalAlignment="Bottom" textHeight="9.65625">
+			<reportElement x="160" y="206" width="262" height="12" origin="1" srcId="11"/>
+			<box>
+				<bottomPen lineWidth="0.0"/>
+			</box>
+			<font fontName="Tahoma" size="8"/>
+			<textContent><![CDATA[null]]></textContent>
+		</text>
+		<text verticalAlignment="Bottom" textHeight="0.0">
+			<reportElement x="160" y="222" width="262" height="12" origin="1" srcId="12"/>
+			<box>
+				<bottomPen lineWidth="0.0"/>
+			</box>
+			<font fontName="Tahoma" size="8"/>
+			<textContent><![CDATA[]]></textContent>
+		</text>
+		<text textAlignment="Left" verticalAlignment="Middle" textHeight="9.65625">
+			<reportElement x="86" y="343" width="336" height="19" origin="1" srcId="13"/>
+			<font fontName="Tahoma" size="8"/>
+			<textContent><![CDATA[Were married canonically at the St. Catherine of Alexandria Cathedral Parish, ]]></textContent>
+		</text>
+		<text textAlignment="Left" verticalAlignment="Middle" textHeight="9.65625">
+			<reportElement x="86" y="362" width="336" height="12" origin="1" srcId="14"/>
+			<font fontName="Tahoma" size="8"/>
+			<textContent><![CDATA[Dumaguete City.]]></textContent>
+		</text>
+		<text textAlignment="Center" verticalAlignment="Middle" textHeight="9.65625">
+			<reportElement x="136" y="172" width="247" height="12" origin="1" srcId="15"/>
+			<font fontName="Tahoma" size="8"/>
+			<textContent><![CDATA[(GROOM)]]></textContent>
+		</text>
+		<text textAlignment="Left" verticalAlignment="Bottom" textHeight="9.65625">
+			<reportElement x="86" y="290" width="74" height="12" origin="1" srcId="16"/>
+			<font fontName="Tahoma" size="8"/>
+			<textContent><![CDATA[Father's Name:]]></textContent>
+		</text>
+		<text textAlignment="Left" verticalAlignment="Bottom" textHeight="9.65625">
+			<reportElement x="86" y="320" width="74" height="12" origin="1" srcId="17"/>
+			<font fontName="Tahoma" size="8"/>
+			<textContent><![CDATA[Address:]]></textContent>
+		</text>
+		<text textAlignment="Left" verticalAlignment="Bottom" textHeight="9.65625">
+			<reportElement x="86" y="305" width="74" height="12" origin="1" srcId="18"/>
+			<font fontName="Tahoma" size="8"/>
+			<textContent><![CDATA[Mother's Name:]]></textContent>
+		</text>
+		<text textAlignment="Center" verticalAlignment="Middle" textHeight="9.65625">
+			<reportElement x="136" y="274" width="250" height="12" origin="1" srcId="19"/>
+			<font fontName="Tahoma" size="8"/>
+			<textContent><![CDATA[(BRIDE)]]></textContent>
+		</text>
+		<text textAlignment="Center" verticalAlignment="Bottom" textHeight="14.484375">
+			<reportElement x="136" y="258" width="250" height="15" origin="1" srcId="20"/>
+			<box>
+				<bottomPen lineWidth="1.0"/>
+			</box>
+			<font fontName="Tahoma" size="12" isBold="true"/>
+			<textContent><![CDATA[null]]></textContent>
+		</text>
+		<text textAlignment="Left" verticalAlignment="Bottom" textHeight="9.65625">
+			<reportElement x="160" y="290" width="262" height="12" origin="1" srcId="21"/>
+			<box>
+				<bottomPen lineWidth="0.0"/>
+			</box>
+			<font fontName="Tahoma" size="8"/>
+			<textContent><![CDATA[null]]></textContent>
+		</text>
+		<text textAlignment="Left" verticalAlignment="Bottom" textHeight="9.65625">
+			<reportElement x="160" y="305" width="262" height="12" origin="1" srcId="22"/>
+			<box>
+				<bottomPen lineWidth="0.0"/>
+			</box>
+			<font fontName="Tahoma" size="8"/>
+			<textContent><![CDATA[null]]></textContent>
+		</text>
+		<text textAlignment="Left" verticalAlignment="Bottom" textHeight="0.0">
+			<reportElement x="160" y="320" width="262" height="12" origin="1" srcId="23"/>
+			<box>
+				<bottomPen lineWidth="0.0"/>
+			</box>
+			<font fontName="Tahoma" size="8"/>
+			<textContent><![CDATA[]]></textContent>
+		</text>
+		<text textAlignment="Left" verticalAlignment="Bottom" textHeight="9.65625">
+			<reportElement x="86" y="376" width="74" height="12" origin="1" srcId="24"/>
+			<font fontName="Tahoma" size="8"/>
+			<textContent><![CDATA[Date of Marriage:]]></textContent>
+		</text>
+		<text verticalAlignment="Bottom" textHeight="9.65625">
+			<reportElement x="160" y="376" width="141" height="12" origin="1" srcId="25"/>
+			<font fontName="Tahoma" size="8"/>
+			<textContent><![CDATA[null]]></textContent>
+		</text>
+		<text textAlignment="Left" verticalAlignment="Bottom" textHeight="9.65625">
+			<reportElement x="86" y="392" width="74" height="12" origin="1" srcId="26"/>
+			<font fontName="Tahoma" size="8"/>
+			<textContent><![CDATA[Solemnized By:]]></textContent>
+		</text>
+		<text textAlignment="Center" verticalAlignment="Middle" textHeight="9.65625">
+			<reportElement x="213" y="242" width="105" height="12" origin="1" srcId="27"/>
+			<font fontName="Tahoma" size="8" isBold="true"/>
+			<textContent><![CDATA[and]]></textContent>
+		</text>
+		<text textAlignment="Left" verticalAlignment="Bottom" textHeight="9.65625">
+			<reportElement x="86" y="421" width="88" height="12" origin="1" srcId="28"/>
+			<font fontName="Tahoma" size="8"/>
+			<textContent><![CDATA[Sponsors]]></textContent>
+		</text>
+		<text verticalAlignment="Bottom" textHeight="9.65625">
+			<reportElement x="160" y="392" width="262" height="12" origin="1" srcId="29"/>
+			<font fontName="Tahoma" size="8"/>
+			<textContent><![CDATA[null]]></textContent>
+		</text>
+		<text textAlignment="Left" verticalAlignment="Bottom" textHeight="0.0">
+			<reportElement x="86" y="433" width="347" height="12" origin="4" srcId="30"/>
+			<box>
+				<topPen lineWidth="0.0"/>
+				<bottomPen lineWidth="0.0"/>
+			</box>
+			<font fontName="Tahoma" size="8"/>
+			<textContent><![CDATA[]]></textContent>
+		</text>
+		<text textAlignment="Left" verticalAlignment="Middle" textHeight="9.65625">
+			<reportElement x="86" y="453" width="356" height="19" origin="7" srcId="31"/>
+			<font fontName="Tahoma" size="8"/>
+			<textContent><![CDATA[In witness whereof, hereunto I affixed my signature and the seal of the Parish this]]></textContent>
+		</text>
+		<text textAlignment="Center" verticalAlignment="Bottom" textHeight="9.65625">
+			<reportElement x="86" y="472" width="35" height="12" origin="7" srcId="32"/>
+			<box>
+				<bottomPen lineWidth="1.0"/>
+			</box>
+			<font fontName="Tahoma" size="8"/>
+			<textContent><![CDATA[17th]]></textContent>
+		</text>
+		<text textAlignment="Center" verticalAlignment="Bottom" textHeight="9.65625">
+			<reportElement x="121" y="472" width="28" height="12" origin="7" srcId="33"/>
+			<font fontName="Tahoma" size="8"/>
+			<textContent><![CDATA[day of]]></textContent>
+		</text>
+		<text textAlignment="Center" verticalAlignment="Bottom" textHeight="9.65625">
+			<reportElement x="150" y="472" width="82" height="12" origin="7" srcId="34"/>
+			<box>
+				<bottomPen lineWidth="1.0"/>
+			</box>
+			<font fontName="Tahoma" size="8"/>
+			<textContent><![CDATA[December]]></textContent>
+		</text>
+		<text textAlignment="Center" verticalAlignment="Bottom" textHeight="9.65625">
+			<reportElement x="237" y="472" width="38" height="12" origin="7" srcId="35"/>
+			<box>
+				<bottomPen lineWidth="1.0"/>
+			</box>
+			<font fontName="Tahoma" size="8"/>
+			<textContent><![CDATA[2012]]></textContent>
+		</text>
+		<text textAlignment="Center" verticalAlignment="Top" textHeight="9.65625">
+			<reportElement x="272" y="509" width="150" height="12" origin="7" srcId="36"/>
+			<box>
+				<topPen lineWidth="1.0"/>
+			</box>
+			<font fontName="Tahoma" size="8"/>
+			<textContent><![CDATA[PARISH PRIEST]]></textContent>
+		</text>
+		<text textAlignment="Left" verticalAlignment="Bottom" textHeight="9.65625">
+			<reportElement x="88" y="532" width="48" height="12" origin="7" srcId="37"/>
+			<font fontName="Tahoma" size="8"/>
+			<textContent><![CDATA[BOOK NO.]]></textContent>
+		</text>
+		<text textAlignment="Left" verticalAlignment="Bottom" textHeight="9.65625">
+			<reportElement x="88" y="545" width="48" height="12" origin="7" srcId="38"/>
+			<font fontName="Tahoma" size="8"/>
+			<textContent><![CDATA[PAGE NO.]]></textContent>
+		</text>
+		<text verticalAlignment="Bottom" textHeight="9.65625">
+			<reportElement x="136" y="532" width="87" height="12" origin="7" srcId="39"/>
+			<font fontName="Tahoma" size="8"/>
+			<textContent><![CDATA[null]]></textContent>
+		</text>
+		<text verticalAlignment="Bottom" textHeight="9.65625">
+			<reportElement x="136" y="545" width="87" height="12" origin="7" srcId="40"/>
+			<font fontName="Tahoma" size="8"/>
+			<textContent><![CDATA[null]]></textContent>
+		</text>
+		<text textAlignment="Center" verticalAlignment="Bottom" textHeight="9.65625">
+			<reportElement x="272" y="496" width="150" height="12" origin="7" srcId="41"/>
+			<font fontName="Tahoma" size="8"/>
+			<textContent><![CDATA[Rev. Fr. Marino Ybo]]></textContent>
+		</text>
+		<text textAlignment="Left" verticalAlignment="Bottom" textHeight="9.65625">
+			<reportElement x="232" y="472" width="10" height="12" origin="7" srcId="42"/>
+			<font fontName="Tahoma" size="8"/>
+			<textContent><![CDATA[,]]></textContent>
+		</text>
+	</page>
+</jasperPrint>

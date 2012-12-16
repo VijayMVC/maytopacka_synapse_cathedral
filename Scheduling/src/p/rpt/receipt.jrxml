@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="201" pageHeight="288" columnWidth="197" leftMargin="2" rightMargin="2" topMargin="2" bottomMargin="2">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="6"/>
+	<parameter name="date" class="java.lang.String"/>
+	<parameter name="name" class="java.lang.String"/>
+	<parameter name="words" class="java.lang.String"/>
+	<parameter name="type" class="java.lang.String"/>
+	<parameter name="mode" class="java.lang.String"/>
+	<parameter name="amount" class="java.lang.String"/>
+	<parameter name="or" class="java.lang.String"/>
+	<parameter name="received_by" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select * from db_bulletin.receipts limit 1;]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer"/>
+	<field name="or_number" class="java.lang.String"/>
+	<field name="reference_number" class="java.lang.String"/>
+	<field name="amount_paid" class="java.lang.Double"/>
+	<field name="payor" class="java.lang.String"/>
+	<field name="or_type" class="java.lang.String"/>
+	<field name="date_added" class="java.sql.Timestamp"/>
+	<field name="payment_type" class="java.lang.String"/>
+	<field name="terminal_id" class="java.lang.String"/>
+	<field name="user_id" class="java.lang.Integer"/>
+	<field name="user_name" class="java.lang.String"/>
+	<field name="status" class="java.lang.Integer"/>
+	<field name="remarks" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="264" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="53" width="197" height="15"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Dotted"/>
+					<bottomPen lineWidth="1.0" lineStyle="Dotted"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ACKNOWLEDGEMENT RECEIPT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="19" y="93" width="82" height="12"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RECEIVED FROM:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="38" y="125" width="63" height="12"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[THE SUM OF:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="55" y="108" width="43" height="12"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[AMOUNT:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="103" y="216" width="92" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="9" isBold="false" isItalic="true" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Received by:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="72" y="16" width="121" height="8"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="6"/>
+				</textElement>
+				<text><![CDATA[CATHEDRAL , DUMAGUETE CITY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="72" y="8" width="121" height="8"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ST. CATHERINE OF ALEXANDRIA PARISH]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="72" y="0" width="121" height="8"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DIOCESE OF DUMAGUETE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="72" y="24" width="121" height="8"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="6"/>
+				</textElement>
+				<text><![CDATA[TEL. NO. 255-4649 / 422- 7765]]></text>
+			</staticText>
+			<image>
+				<reportElement x="35" y="0" width="37" height="34"/>
+				<imageExpression><![CDATA["G:\\Systems_2012_09_22\\for_cathedral\\Scheduling\\src\\bb\\img2\\buttons copy.png"]]></imageExpression>
+			</image>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="120" y="68" width="77" height="12"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="101" y="93" width="92" height="12"/>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{name}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="72" y="137" width="121" height="12"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{words}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="19" y="164" width="118" height="12"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="9" isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{type}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="101" y="108" width="51" height="12"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="9" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{amount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="103" y="204" width="92" height="12"/>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{received_by}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="124" y="240" width="67" height="12"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font size="8" isBold="true" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{or}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="17" y="241" width="95" height="6"/>
+				<box>
+					<bottomPen lineWidth="1.0" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="7" isBold="false" isItalic="true" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="111" y="241" width="13" height="12"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[No.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="239" width="193" height="15"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Dotted"/>
+					<bottomPen lineWidth="1.0" lineStyle="Dotted"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
